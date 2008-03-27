@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- I THINK THIS FILE IS OBSOLETE -->
+
+<configuration>
+  <production>
+    <blog>
+      <class>Blog</class>
+      <controller>BlogController</controller>
+    </blog>
+    <rule>
+      <class>Rule</class>
+      <controller>RuleController</controller>
+    </rule>
+  </production>
+  
+  <staging extends="production">
+  </staging>
+</configuration>

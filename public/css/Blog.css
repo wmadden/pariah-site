@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+
+.news_article {
+  border: #cfcfcf 1px solid;
+  font-family: "Bitstream Vera Sans","Lucida Sans",Sans;
+  font-size: 12px;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.news_header {
+  background-color: #F4F4F4;
+  border-bottom: #cfcfcf 1px solid;
+}
+
+.news_article > * > * {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.news_title {
+  padding-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.news_author {
+  font-style: italic;
+  font-size: 12px;
+}
+
+.news_date {
+  font-size: 12px;
+}
+
+.news_body {
+  text-indent: 10px;
+  padding: 2px;
+  font-size: 12px;
+}

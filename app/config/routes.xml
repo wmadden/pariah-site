@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<configuration>
+  <production>
+    <routes>
+      
+      <project>
+        <route>projects/:name/:controller/:action/*</route>
+        <defaults>
+          <module>projects</module>
+          <controller>index</controller>
+          <action>view</action>
+        </defaults>
+        <reqs>
+          <name>\w+</name>
+        </reqs>
+      </project>
+      
+      <user_blog>
+        <route>blog/:username/:action/*</route>
+        <defaults>
+          <module>resource</module>
+          <resource>blog</resource>
+          <action>view</action>
+        </defaults>
+        <reqs>
+          <username>\w+</username>
+        </reqs>
+      </user_blog>
+      
+      <blog>
+        <route>blog/:id/:action/*</route>
+        <defaults>
+          <module>resource</module>
+          <resource>Blog</resource>
+          <action>view</action>
+        </defaults>
+        <reqs>
+          <id>\d+</id>
+        </reqs>
+      </blog>
+      
+      <user>
+        <route>user/:username/:action/*</route>
+        <defaults>
+          <module>users</module>
+          <controller>index</controller>
+          <action>index</action>
+        </defaults>
+      </user>
+      
+      <login>
+        <route>login</route>
+        <type>Zend_Controller_Router_Route_Static</type>
+        <defaults>
+          <module>users</module>
+          <controller>index</controller>
+          <action>login</action>
+        </defaults>
+      </login>
+      
+      <logout>
+        <route>logout</route>
+        <defaults>
+          <module>users</module>
+          <controller>index</controller>
+          <action>logout</action>
+        </defaults>
+      </logout>
+      
+      <register>
+        <route>register</route>
+        <defaults>
+          <module>users</module>
+          <controller>index</controller>
+          <action>register</action>
+        </defaults>
+      </register>
+    </routes>
+  </production>
+  
+  <staging extends="production">
+    
+  </staging>
+  
+</configuration>

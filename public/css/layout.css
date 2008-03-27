@@ -1,0 +1,206 @@
+/******************************************************************************
+  layout.css
+  Describes the layout of the site divs.
+
+  Structure:
+    A container div holds everything on the page, and is centered.
+    Inside this container, content is divided into two groups, foreground and
+    background, which have separate divs.  The background div is absolutely
+    positioned, to remove it from the flow.  The foreground div holds the
+    actual page content.
+    
+    The foreground is divided into 3 horizontal strips: top, mid and bottom.  
+    Mid is again divided into two horizontal strips: left and right.  Left is
+    160px wide, and stretches vertically with its content; right takes up any 
+    remaining horizontal space and stretches vertically with its content.  Top
+    and bottom are fixed height and width.
+    
+    The background contains 4 border divs, which are 100% x 100% and 4 corner
+    divs of 22px x 22px, arranged at each of the corners.  The border divs have
+    ids: top, right, bottom and left and provide the repeating border
+    backgrounds.  The corner divs have ids NW, NE, SE and SW and provide the
+	corner images.
+
+******************************************************************************/
+
+body {
+  /* This is used to scale the ems measurements used later */
+  font-size: 10px;
+  margin: 0em 3em 0em 3em;
+}
+
+div {
+  
+}
+
+
+/******************************************************************************
+  Container
+******************************************************************************/
+.container {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 55em;
+  /*max-width: 100em;*/
+  min-height: 34em;
+  margin: 0 auto 0 auto;
+}
+
+/******************************************************************************
+  Background and Foreground
+******************************************************************************/
+.container > .background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+}
+
+.container > .foreground {
+  height: 100%;
+  position: relative;
+}
+
+/******************************************************************************
+  Background borders and corners
+******************************************************************************/
+.container > .background > .border_top, .container > .background > .border_right, .container > .background > .border_bottom, .container > .background > .border_left  {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
+.container > .background > .corner_NW, .container > .background > .corner_NE {
+  top: 0px;
+  height: 21px;
+  position: absolute;
+  width: 22px;
+}
+
+
+.container > .background > .corner_SE, .container > .background > .corner_SW {
+  bottom: 0px;
+  position: absolute;
+  height: 22px;
+  width: 22px;
+}
+
+
+
+.container > .background > .corner_NE, .container > .background > .corner_SE {
+  right: 0px;
+}
+
+.container > .background > .corner_NW, .container > .background > .corner_SW {
+  left: 0px;
+}
+
+
+.container > .background > .splash_top {
+  position: absolute;
+  top: 9px;
+  left: 9px;
+  right: 10px;
+  height: 70px;
+}
+
+.container > .background > .splash_left {
+  position: absolute;
+  left: 10px;
+  top: 80px;
+  bottom: 10px;
+  width: 150px;
+}
+
+.container > .background > .splash_right {
+  position: absolute;
+  left: 161px;
+  top: 80px;
+  width: 87px;
+  height: 65px;
+}
+
+/******************************************************************************
+  Top, Mid and Bottom
+******************************************************************************/
+.container > .foreground > .top {
+  height: 69px;
+  padding-top: 11px;
+  padding-left: 11px;
+  padding-right: 11px;
+}
+
+.container > .foreground > .mid {
+  margin-top: 1px;
+}
+
+.container > .foreground > .bottom {
+  margin-top: 1px;
+  height: 22px;
+}
+
+/******************************************************************************
+  Left and Right
+******************************************************************************/
+.container > .foreground > .mid > .left, .container > .foreground > .mid > .right {
+  min-height: 23.9em;
+}
+
+.container > .foreground > .mid > .left {
+  float: left;
+  width: 150px;
+  padding-left: 10px;
+}
+
+.container > .foreground > .mid > .right {
+  margin-left: 160px;
+  padding-right: 10px;
+  padding-left: 1px;
+}
+
+.container > .foreground > .mid > .spacer {
+  clear: left;
+  margin-top: -50px;
+}
+
+/******************************************************************************
+  Content divs
+******************************************************************************/
+.container > .foreground > * > .content, .container > .foreground > * > * > .content {
+}
+
+.container > .foreground > .top > .content {
+  height: 68px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container > .foreground > .mid > .left > .content {
+}
+
+.container > .foreground > .mid > .right > .content {
+  
+}
+
+.container > .foreground > .mid > .right > .content_path {
+  height: 1.7em;
+  overflow: hidden;
+}
+
+.container > .foreground > .mid > .right > .content_main {
+}
+
+.container > .foreground > .mid > .spacer > div.buttons {
+  width: 150px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: -15px;
+  text-align: center;
+}
+.container > .foreground > .mid > .spacer > div.buttons * {
+  border-style: none;
+}

@@ -1,0 +1,13 @@
+<?php
+  $request = $this->request;
+?>
+
+<?php $this->placeholder('breadcrumbs')->captureStart(); ?>
+Index
+<?php $this->placeholder('breadcrumbs')->captureEnd(); ?>
+
+<?php $this->placeholder('content')->captureStart(); ?>
+Module: <?= $request->getParam('module') ?><br />
+Controller: <?= $request->getParam('controller') ?><br />
+Action: <?= $request->getParam('action') ?><br />
+<?php $this->placeholder('content')->captureEnd() ?>

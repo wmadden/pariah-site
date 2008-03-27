@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	config.xml
+	
+	This file contains general configuration data.
+-->
+<configuration>
+	<production>
+		<layout>
+			<layoutPath>../app/layouts</layoutPath>
+			<layout>default</layout>
+		</layout>
+		
+		<site_name>Pariah Software</site_name>
+
+		<database>
+		  <adapter>Mysqli</adapter>
+			<params>
+				<host>db.telana.com</host>
+				<username>pariahsw</username>
+				<password>magnacarta</password>
+				<dbname>pariahsw</dbname>
+			</params>
+		</database>
+		
+		<authentication>
+		  <table_name>users</table_name>
+		  <identity_column>username</identity_column>
+		  <credential_column>password</credential_column>
+		  <credential_treatment>MD5(?)</credential_treatment>
+		</authentication>
+		
+		<authorization>
+		  <!-- The default role available to guests (users who aren't logged in) -->
+		  <default_role>User</default_role>
+		  <!-- This determines the default authorization state, a blacklist will by
+		       default allow all transactions, by all users, on all resources. This
+		       defaults to false. -->
+		  <blacklist>false</blacklist>
+		</authorization>
+	</production>
+
+	<staging extends="production">
+		<database>
+      <params>
+        <dbname>zend</dbname>
+      </params>
+    </database>
+	</staging>
+</configuration>

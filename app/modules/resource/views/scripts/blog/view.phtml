@@ -1,0 +1,18 @@
+<?php
+  $request = $this->request;
+?>
+
+<?php $this->placeholder('breadcrumbs')->captureStart(); ?>
+Blog<?php if( isset($this->blog) ) echo ' > ' . $this->blog->getTitle(); ?>
+<?php $this->placeholder('breadcrumbs')->captureEnd(); ?>
+
+<?php $this->placeholder('content')->captureStart(); ?>
+
+<?= $this->partial( 'partials/Blog.phtml',
+                    array(
+                      'blog' => $this->blog,
+                      'article' => $this->article
+                    )
+                  ) ?>
+
+<?php $this->placeholder('content')->captureEnd(); ?>

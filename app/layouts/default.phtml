@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <!-- Meta Information -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <?= $this->headStyle() ?>
+    
+    <!-- Javascript -->
+    <?= $this->headScript() ?>
+    
+    <!-- Title -->
+    <?= $this->headTitle() ?>
+  </head>
+  <body>
+    <div class="container">
+      <div class="background">
+        <div class="border_top"></div>
+        <div class="border_right"></div>
+        <div class="border_bottom"></div>
+        <div class="border_left"></div>
+        <div class="corner_NW"></div>
+        <div class="corner_NE"></div>
+        <div class="corner_SE"></div>
+        <div class="corner_SW"></div>
+        <div class="splash_top"></div>
+        <div class="splash_left"></div>
+        <div class="splash_right"></div>
+      </div>
+      
+      <div class="foreground">
+        <div class="top">
+          <div class="content">
+            <a class="title" href="index.php"></a>
+            <a class="about" href="index.php?node=about"></a>
+            <div class="module_Status">
+              <div class="status_box">
+                <?php if( User::isLoggedIn() ): ?>
+                You are logged in as <?= User::getLoggedInUser()->getUsername() ?>.
+                <a href="<?= $this->url(array(), 'logout', true) ?>">Log out?</a>
+                <?php else: ?>
+                You are logged out.
+                <a href="<?= $this->url(array(), 'login', true) ?>">Log in?</a>
+                <?php endif; ?>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mid">
+          <div class="left">
+            <div class="content">
+              <?= $this->placeholder('menu') ?>
+            </div>
+          </div>
+          <div class="right">
+            <div class="content_path">
+              <?= $this->placeholder('breadcrumbs') ?>
+              (<?php
+                $request = Zend_Controller_Front::getInstance()->getRequest();
+                echo $request->getParam('module') . '->' .
+                $request->getParam('controller') . '->' .
+                $request->getParam('action');
+              ?>)
+            </div>
+            <div class="content_main">
+              <?= $this->placeholder('content') ?>
+            </div>
+          </div>
+          <div class="spacer">
+            <!-- Required to keep floats within parent div -->
+            <!-- Also now contains firefox button -->
+            <div class="buttons">
+              <a href="http://getfirefox.com/"
+                 title="Get Firefox - Take Back the Web">
+                <img src="/images/takebacktheweb_small.jpg" width="125" height="50" alt="Get Firefox" />
+              </a> 
+            </div>
+          </div>
+          
+        </div>
+        <div class="bottom">
+        </div>
+      </div>
+
+    
+    </div>
+  </body>
+</html>

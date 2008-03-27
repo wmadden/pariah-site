@@ -1,0 +1,43 @@
+<?php
+$article = $this->article;
+$teaser_form = $this->teaser_form !== null ? $this->teaser_form : true;
+?>
+<div class="news_article">
+  <div class="news_header">
+    <div class="news_title">
+      <?php
+        if( $teaser_form ):
+      ?>
+      <a href="<?= $this->url(array('article' => $article->getId()), 'blog') ?>"><?= $article->getTitle() ?></a>
+      <?
+        else:
+          echo $article->getTitle();
+        endif;
+      ?>
+      <span class="news_date">
+        <?= $article->getDate() ?>
+      </span>
+    </div>
+    <div class="news_author">
+      by <?= $article->getAuthor() ?>
+    </div>
+  </div>
+  <div class="news_contents">
+    <div class="news_body">
+      <?php
+        if( $teaser_form == true )
+        {
+          $teaser = $this->article->getTeaser();
+          if( $teaser === null )
+          {
+            $body = $this->article->getBody();
+            $teaser = substr($body, 0, 150) . '...';
+          }
+          echo $teaser;
+        }
+        else
+          echo $this->article->getBody();
+      ?>
+    </div>
+  </div>
+</div>

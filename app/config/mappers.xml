@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  -  mappers.xml
+  -  
+  -  This file contains configuration info for the different kinds of mappers.
+  -  It is split into two sections, "models" and "mappers".
+  -  
+  -  Each element in the "models" section is assumed to correspond to a Model
+  -  type of the same name, and contains an element "mapper" whose value is the
+  -  name of the mapper class used to load that model type, and a "config"
+  -  element, whose value is an array to be passed to the mapper upon
+  -  initialisation.
+  - 
+  -  Each element in the "mappers" section is assumed to correspond to a Mapper
+  -  of the same name, and is interpreted as an array of default configuration
+  -  data to be passed to the mapper upon initialization.
+  - 
+  -  The values in the "models" section are a specification of the values in the
+  -  "mappers" section.
+  -->
+
+<!-- Note: i've used inheritance below with the extends attribute, but it doesnt
+     seem to be working. need to fix this. -->
+<configuration>
+
+  <production>
+    <mappers>
+    </mappers>
+   
+		<models>
+		  <Model>
+		    <mapper>ModelTable</mapper>
+		  </Model>
+		  
+		  <CompositeModel extends="Model">
+		    <mapper>CompositeModelTable</mapper>
+		  </CompositeModel>
+		
+		  <Resource extends="Model">
+		    <mapper>CompositeModelTable</mapper>
+		  </Resource>
+		
+		  <Blog extends="models.Resource">
+		    <mapper>CompositeModelTable</mapper>
+		    <config>
+		      <model>Blog</model>
+		    </config>
+		  </Blog>
+		  
+		  <BlogArticle extends="Resource">
+		    <mapper>CompositeModelTable</mapper>
+		    <config>
+		      <model>BlogArticle</model>
+		    </config>
+		  </BlogArticle>
+		  
+		  <Rule extends="Resource">
+		    <mapper>CompositeModelTable</mapper>
+		    <config>
+		      <model>Rule</model>
+		    </config>
+		  </Rule>
+		  
+		  <Role extends="Resource">
+		    <mapper>CompositeModelTable</mapper>
+		    <config>
+		      <model>Role</model>
+		    </config>
+		  </Role>
+		  
+		  <Action extends="Resource">
+		    <mapper>CompositeModelTable</mapper>
+        <config>
+          <model>Action</model>
+        </config>
+      </Action>
+      
+      <User extends="Resource">
+        <mapper>CompositeModelTable</mapper>
+        <config>
+          <model>User</model>
+        </config>
+      </User>
+		</models>
+  </production>
+  
+  <staging extends="production">
+  </staging>
+  
+</configuration>

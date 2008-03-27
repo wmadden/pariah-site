@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  <production>
+    <areas>
+    
+      <access>
+        <users>
+          <controller></controller>
+        </users>
+        <rules>
+          <controller></controller>
+        </rules>
+        <roles>
+          <controller></controller>
+        </roles>
+        <actions>
+          <controller></controller>
+        </actions>
+      </access>
+    
+      <content>
+        <nodes>
+        </nodes>
+        <blogs>
+        </blogs>
+        <profiles>
+        </profiles>
+      </content>
+    
+      <config>
+        <controller></controller>
+      </config>
+    
+    </areas>
+  </production>
+  
+  <staging extends="production">
+  </staging>
+</configuration>

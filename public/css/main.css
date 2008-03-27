@@ -1,0 +1,12 @@
+/* Template rules */
+@import url("/css/layout.css");
+@import url("/css/fonts.css");
+@import url("/css/appearance.css");
+@import url("/css/modules.css");
+@import url("/css/Blog.css");
+@import url("/css/Login.css");
+@import url("/css/Status.css");
+
+/* Custom rules */
+/* The customize stylesheet allows you to customize the template, without messing up the defaults. */
+@import url("/custom.css");

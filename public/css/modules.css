@@ -1,0 +1,181 @@
+/* 
+  Module: Status
+
+  Effects: makes it sit on the right
+*/
+.container > .foreground > .top > .content > .module_Status {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+/*
+  Module: Menu
+  
+  Effects:
+    Top: makes a horizontal menu from a ul, whose list items pop up on hover
+	Left: makes a vertical menu from a ul
+	Colours list items
+*/
+/* The following sets different background colours for the menu items */
+/* Menu item #1 */
+.module_Menu li:hover * {
+  color: #0e6330;
+}
+/* Menu item #2 */
+.module_Menu li + li:hover * {
+  color: #52908d;
+}
+/* Menu item #3 */
+.module_Menu li + li + li:hover * {
+  color: #6c4874;
+}
+/* Menu item #4 */
+.module_Menu li + li + li + li:hover * {
+  color: #7b3941;
+}
+/* Menu item #5 */
+.module_Menu li + li + li + li + li:hover * {
+  color: #bfaf45;
+}
+/* Menu item #6 */
+.module_Menu li + li + li + li + li + li:hover * {}
+/* Menu item #7 */
+.module_Menu li + li + li + li + li + li + li:hover * {}
+
+.module_Menu h2 {
+  display: block;
+  height: 1.4em;
+  font-size: 12px;
+  border-bottom: 1px solid #cfcfcf;
+  padding-left: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+}
+
+.module_Menu a {
+	color: #787878;
+	text-decoration: none;
+}
+
+
+/* The top menu */
+.top .module_Menu {
+	min-width: 200px;
+}
+
+.top .module_Menu ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+.top .module_Menu li {
+	display: block;
+	list-style: none;
+	
+	float: left;
+	width: 96px;
+	height: 15px;
+
+	border: 1px #cfcfcf solid;
+	border-bottom: 0px none;
+
+	margin: 0px;
+	padding: 0px;
+	margin-left: 10px;
+
+	text-align: center;
+	
+	font-family: 'Trebuchet MS';
+	font-size: 12px;
+	color: #6d6d6d;
+}
+
+.top .module_Menu li:hover {
+	position: relative;
+	top: -10px;
+	background-color: #fafafa;
+	font-weight: bold;
+	height: 25px;
+}
+
+.top .module_Menu li_one a:hover {
+	background-color: #caeedf;
+}
+
+.top .module_Menu li_two a:hover {
+	background-color: #aade55;
+}
+
+
+
+
+.left .module_Menu {
+	position: relative;
+	width: 100%;
+}
+
+.left .module_Menu ul {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Trebuchet MS';
+	font-size: 12px;
+	color: #787878;
+}
+
+.left .module_Menu li {
+	display: block;
+	list-style: none;
+	
+	width: 100%;
+	
+	border-bottom: 1px #cfcfcf solid;
+	
+	margin: 0px;
+	padding: 0px;
+	
+	font-size: 12px;
+	
+	vertical-align: middle;
+}
+
+.left .module_Menu li > a {
+  display: block;
+  height: 1.5em;
+  text-indent: 10px;
+  width: 150px;
+}
+
+.left .module_Menu a:hover {
+	font-weight: bold;
+}
+
+/*
+  Module: Blog
+  
+  Effects: margins
+*/
+.module_Blog {
+  margin: 1em 2em 1em 2em;
+}
+
+
+.module_Stat {
+  font-size: 12px;
+}
+
+.module_Stat h1, .module_Stat p {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.module_Stat .about_text h1 {
+  font-size: 14px;
+}
+
+.module_Stat .about_text p {
+  font-size: 12px;
+  text-indent: 0.5em;
+}

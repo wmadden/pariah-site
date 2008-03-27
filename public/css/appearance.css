@@ -1,0 +1,105 @@
+body {
+  background-color: #4e4e4e;
+}
+
+.container > .background {
+  background-color: #FFFFFF;
+}
+
+
+.container > .background > .border_top, .container > .background > .border_bottom {
+  background-repeat: repeat-x;
+}
+
+.container > .background > .border_top {
+  background-image: url('/images/border_top.jpg');
+}
+
+.container > .background > .border_bottom {
+  background-image: url('/images/border_bottom.jpg');
+  background-position: 0% 100%;
+}
+
+.container > .background > .border_left, .container > .background > .border_right {
+  background-repeat: repeat-y;
+}
+
+.container > .background > .border_left {
+  background-image: url('/images/border_left.jpg');
+}
+
+.container > .background > .border_right {
+  background-image: url('/images/border_right.jpg');
+  background-position: 100% 0%;
+}
+
+.container > .background > .corner_NW, .container > .background > .corner_NE {
+  background-position: 0% -1px;
+}
+
+.container > .background > .corner_SE {
+  background-image: url('/images/SE.jpg');
+}
+
+.container > .background > .corner_SW {
+  background-image: url('/images/SW.jpg');
+}
+
+.container > .background > .corner_NW {
+  background-image: url('/images/NW.jpg');
+}
+
+.container > .background > .corner_NE {
+  background-image: url('/images/NE.jpg');
+}
+
+.container > .background > .splash {
+  background-image: url('/images/splash.jpg');
+}
+
+
+
+.container > .background > .splash_top {
+  border-bottom: 1px solid #CFCFCF;
+  background-image: url('/images/splash_top.jpg');
+  background-repeat: no-repeat;
+  background-position: 26px 0px;
+}
+
+.container > .background > .splash_left {
+  border-right: 1px solid #CFCFCF;
+  background-image: url('/images/splash_left.jpg');
+  background-repeat: no-repeat;
+}
+
+.container > .background > .splash_right {
+  background-image: url('/images/splash_right.jpg');
+  background-repeat: no-repeat;
+}
+
+
+.container > .foreground > .mid > .right > .content_path {
+  border-bottom: 1px solid #CFCFCF;
+}
+
+.container > .foreground > .top > .content > .title {
+  width: 282px;
+  height: 30px;
+  display: block;
+  position: absolute;
+  top: 17px;
+  left: 46px;
+}
+
+.container > .foreground > .top > .content > .about {
+  width: 68px;
+  height: 12px;
+  display: block;
+  position: absolute;
+  top: 48px;
+  left: 256px;
+}
+
+.container > .foreground > .mid > .right > .content_path {
+  border-bottom: 1px solid #CFCFCF;
+}

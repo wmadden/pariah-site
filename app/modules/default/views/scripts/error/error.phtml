@@ -1,0 +1,25 @@
+<?php 
+  $ph_reg = Zend_View_Helper_Placeholder_Registry::getRegistry();
+  
+  if( $ph_reg->containerExists('content') )
+    $ph_reg->deleteContainer('content');
+    
+  $this->placeholder('content')->captureStart();
+?>
+    <h1>An error occurred</h1>
+    <p>An error occurred; please try again later.</p>
+    <?php
+      $request = $this->request;
+    ?>
+    Module: <?= $request->getParam('module') ?><br />
+    Controller: <?= $request->getParam('controller') ?><br />
+    Action: <?= $request->getParam('action') ?>
+    <h2><?=$this->exception->getFile()?>:
+        <?=$this->exception->getLine()?>:
+        <?= get_class($this->exception) ?>:
+        <?= $this->exception->getMessage() ?> (error code <?= $this->exception->getCode() ?>)
+    </h2>
+    <p style="font-size: 14px; font-family: Courier New">
+      <?= str_replace("\n", '<br/>',$this->exception->getTraceAsString()) ?>
+    </p>
+<?php $this->placeholder('content')->captureEnd(); ?>

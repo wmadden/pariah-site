@@ -1,0 +1,106 @@
+/*
+Login page will be structured as follows:
+
+Everything will be inside a div with class="login_module"
+The title will be inside a div of class "title"
+Any other content will be inside a div of class "content"
+Any messages within the login_module div will be in "message" class divs
+Messages will have an ID specifying the kind of message, if success or error
+Default messages should appear neutral.
+
+E.g. for log in form,
+<div class="login_box">
+	<div class="title">Log In</div>
+	<div class="content>
+		<form>
+			<label for="username">Username: </label>
+			<input type="text" id="username" />
+			<label for="password">Password: </label>
+			<input type="password" id="password" />
+			<input type="submit" value="Log In" />
+		</form>
+	</div>
+</div>
+
+*/
+
+.login_box {
+  border: #cfcfcf 1px solid;
+  font-family: "Bitstream Vera Sans","Lucida Sans",Sans;;
+  font-size: 10px;
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+  color: #000000;
+}
+
+.login_box .title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #F4F4F4;
+  text-align: center;
+  margin-bottom: 10px;
+  border-bottom: #cfcfcf 1px solid;
+}
+
+.login_box .content {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.login_box .message {
+  width: 80%;
+  border: #888888 1px solid;
+  background-color: #D0E0F4;
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.login_box .message#success {
+  background-color: #D0FFC0;
+}
+
+.login_box .message#failure {
+  background-color: #F4D0C0;
+}
+
+/* Forms */
+/* Login Form */
+.login_box form {
+  margin: auto;
+  width: 50%;text-align: center;
+}
+
+.login_box form input {
+  border: #cfcfcf 1px solid;
+}
+
+.login_box .username input, .login_box .password input {
+  width: 100px;
+}
+.login_box .username label, .login_box .password label {
+  width: 100px;
+}
+
+.login_box .username, .login_box .password {
+  margin:auto;
+  margin-top: 5px;
+  width: 200px;
+}
+
+.login_box .buttons {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.login_box .buttons input {
+  font-size: 12px;
+  width: 60px;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+	paths.xml
+	
+	This file contains paths.
+ -->
+
+<configuration>
+    <production>
+    
+      <module_paths>
+      	<default>../app/modules/default/controllers</default>
+      	<projects>../app/modules/projects/controllers</projects>
+      	<users>../app/modules/users/controllers</users>
+      	<blog>../app/modules/blog/controllers</blog>
+      	<resource>../app/modules/resource/controllers</resource>
+      </module_paths>
+    
+    </production>
+    
+    <staging extends="production">
+      
+    </staging>
+</configuration>

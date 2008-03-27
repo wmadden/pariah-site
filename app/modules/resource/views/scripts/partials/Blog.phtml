@@ -1,0 +1,32 @@
+<div class="module_Blog">
+<?php
+$blog = $this->blog;
+
+if( isset($this->article) )
+{
+  $article = $blog->getComponent($this->article);
+  // If such an article exists,
+  if( $article )
+  {
+    echo $this->partial( 'partials/BlogArticle.phtml',
+                         array (
+                            'article' => $article,
+                            'teaser_form' => false
+                         )
+                       );
+  }
+}
+else if( isset($this->blog) )
+{
+  // TODO: rewrite using partialLoop
+  $articles = $blog->getComponents('Article');
+  foreach( $articles as $article )
+    echo $this->partial( 'partials/BlogArticle.phtml',
+                         array (
+                            'article' => $article,
+                            'teaser_form' => true
+                         )
+                       );
+}
+?>
+</div>
