@@ -13,62 +13,35 @@
  *  construction - default, from data, from another model (copy)
  *  member access
  * 
+ * The purpose of the Model class is to allow easy manipulation of an object in
+ * memory. Loading and saving those objects is the job of the Mapper.
+ * 
  * Loading and saving models is done elsewhere
  */
 // TODO: implement Iterator interface
-class Model
+// TODO: implement more intelligent __call function, which can handle complex
+//       redirects like get* and set*.
+class Pariah_Model
 {
   /**
    * Constructs a Model.
    *
    * If $data is a Model, copy constructor.
    * If $data is an array, builds model from array.
-   * If $id is not null, sets model ID.
    * 
    * @param array $data A map of member names to values.
    */
-  public function __construct( $data = null, $id = null, $dirty = true )
+  public function __construct( $data = null )
   {
     if( $data instanceof Model )
     {
-      $this->_data = $model->_data;
-      $this->fields = $model->fields;
-      $this->id = $model->id;
-      $this->dirty = $model->dirty;
+      $this->_data = $data->_data;
+      $this->fields = $data->fields;
       return;
     }
-    else if( is_array($data) )
-      $this->fromArray($data);
     
-    if( $id != null )
-      $this->id = $id;
-    
-    $this->dirty = $dirty;
-  }
-  
-  public function getId()
-  {
-    return $this->id;
-  }
-  
-  public function setId( $id )
-  {
-    $this->id = $id;
-  }
-  
-  public function concrete()
-  {
-    return $this->id != null;
-  }
-
-  public function getDirty()
-  {
-    return $this->dirty;
-  }
-  
-  public function setDirty( $dirty )
-  {
-    $this->dirty = $dirty;
+    if( is_array($data) )
+      $this->_fromArray($data);
   }
   
   /**
@@ -81,7 +54,7 @@ class Model
     return $this->_data;
   }
   
-  public function fromArray( array $data )
+  protected function _fromArray( array $data )
   {
     $this->_data = $data;
   }
@@ -113,7 +86,7 @@ class Model
     if( ereg("(get|set)([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)", $name, $regs) !== false )
     {
       // Get the name of the operation
-      $op = $regs[1];
+      $operation = $regs[1];
       // Get the name of the field
       $field = $regs[2];
       
@@ -122,17 +95,17 @@ class Model
       
       // If the variable to get/set is not a field, throw an exception
       if( !$this->hasField($field) )
-        throw new ModelException("There is no field matching the name '$field' to $op.");
+        throw new Pariah_Model_Exception("There is no field matching the name '$field' to $op.");
       
-      if( $op == 'set' )
+      if( $operation == 'set' )
       {
-        $this->set($field, $arguments[0]);
+        $this->_set($field, $arguments[0]);
       }
       
-      return $this->get($field);
+      return $this->_get($field);
     }
 
-    throw new ModelException("Model has no method '$name'.", 4);
+    throw new Pariah_Model_Exception("Model has no method '$name'.", 4);
   }
   
   /**
@@ -170,19 +143,17 @@ class Model
     return $this;
   }
   
-  protected function set( $field, $value )
+  protected function _set( $field, $value )
   {
     $this->_data[$field] = $value;
     $this->dirty = true;
   }
   
-  protected function get( $field )
+  protected function _get( $field )
   {
     return $this->_data[$field];
   }
   
-  protected $dirty = true;
-  private $id = null;
   /**
    * Defines accessible variables in this component.
    * 
@@ -193,7 +164,7 @@ class Model
    *
    * @var array The component fields.
    */
-  private $fields = array();
+  protected $_fields = array();
   /**
    * This variable holds the values of fields defined in the $fields array.
    *
@@ -214,5 +185,5 @@ class Model
    * 
    * @var array
    */
-  private $methods = array();
+  protected $_methods = array();
 }
