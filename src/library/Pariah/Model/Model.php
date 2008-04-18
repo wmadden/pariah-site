@@ -8,15 +8,19 @@
 /**
  * A Model represents an object in the domain.
  * 
- * This class represents a Model in the most general sense. It provides the
- * basic Model operations:
- *  construction - default, from data, from another model (copy)
- *  member access
+ * The Model class operates on the principle that Models will basically be a
+ * collection of publicly accessible field. To allow subclasses to easily
+ * specify what fields they contain, without having to write all the accessor
+ * methods, the Model base class provides the $_fields array, which denotes the
+ * available fields in the model.
  * 
- * The purpose of the Model class is to allow easy manipulation of an object in
- * memory. Loading and saving those objects is the job of the Mapper.
+ * To add or delete fields from the $_fields array, use addField and delField.
+ * (There are also versions of these functions which take arrays, addFields and
+ * delFields, provided for convenience.)
+ * You can, of course, modify the $_fields array by hand, but this means that
+ * your Model will overwrite any existing fields.
  * 
- * Loading and saving models is done elsewhere
+ * To load and save models, use a Mapper.
  */
 // TODO: implement Iterator interface
 // TODO: implement more intelligent __call function, which can handle complex
@@ -54,6 +58,11 @@ class Pariah_Model
     return $this->_data;
   }
   
+  /**
+   * Loads the model from an array.
+   *
+   * @param array $data
+   */
   protected function _fromArray( array $data )
   {
     $this->_data = $data;
@@ -157,18 +166,15 @@ class Pariah_Model
   /**
    * Defines accessible variables in this component.
    * 
-   * The fields variable is an array of fields in the model.
-   * Note that these fields represent permanent fields, which should be saved
-   * to a database (and will be, by ModelTable and it's subclasses). For run-
-   * time only fields, you must create your own accessors.
+   * The fields variable is an array of names of fields in the model.
    *
-   * @var array The component fields.
+   * @var array The Model's fields.
    */
   protected $_fields = array();
   /**
    * This variable holds the values of fields defined in the $fields array.
    *
-   * NOTE: This variable is not intended to be accessed directly! You should,
+   * This variable is not intended to be accessed directly! You should,
    * where possible, use accessor methods to access the data in this array, so
    * that overridden accessors are called.
    * 
