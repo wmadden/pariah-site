@@ -9,7 +9,7 @@
  * @author William Madden
  */
 
-class MapperException extends Zend_Exception
+class Pariah_Mapper_Exception extends Pariah_Exception
 {
   
 }
