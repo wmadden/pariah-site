@@ -21,6 +21,13 @@
 class Pariah_Mapper
 {
   /**
+   * An array of mappers instantiated through get.
+   *
+   * @var unknown_type
+   */
+  protected static $_mappers = array();
+  
+  /**
    * The protected constructor, used to enforce singleton mappers.
    */
   protected function __construct()
@@ -53,6 +60,7 @@ class Pariah_Mapper
    */
   public static function get( $model )
   {
+    // Get the name of the mapper (without the leading 'Pariah_Mapper_'
     $mapper_name = $model;
     if( $model instanceof Pariah_Model )
     {
@@ -62,6 +70,7 @@ class Pariah_Mapper
     // If the mapper has already been instantiated through get()
     if( isset(self::$_mappers[$mapper_name]) )
     {
+      // Return the existing instance
       return self::$_mappers[$mapper_name];
     }
     
@@ -70,10 +79,9 @@ class Pariah_Mapper
     return $mapper;
   }
   
-  /**
-   * An array of mappers instantiated through get.
-   *
-   * @var unknown_type
-   */
-  protected static $mappers = array();
+  protected static function getMapperName( Pariah_Model $model )
+  {
+    // TODO: test this
+    return substr( get_class($model), 13 );
+  }
 }
