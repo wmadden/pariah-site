@@ -68,6 +68,16 @@ class Pariah_Model
     $this->_data = $data;
   }
   
+  public function getId()
+  {
+    return $this->_id;
+  }
+  
+  public function setId( $id )
+  {
+    $this->_id = $id;
+  }
+  
   /**
    * Provides function overloads.
    * 
@@ -122,7 +132,9 @@ class Pariah_Model
    */
   protected function addField( $field )
   {
-    $this->fields[] = $field;
+    if( !in_array($field, $this->_fields) )
+      $this->fields[] = $field;
+    
     return $this;
   }
   
@@ -164,6 +176,13 @@ class Pariah_Model
   }
   
   /**
+   * The Model's ID.
+   *
+   * @var unknown_type
+   */
+  protected $_id = null;
+  
+  /**
    * Defines accessible variables in this component.
    * 
    * The fields variable is an array of names of fields in the model.
@@ -171,6 +190,7 @@ class Pariah_Model
    * @var array The Model's fields.
    */
   protected $_fields = array();
+  
   /**
    * This variable holds the values of fields defined in the $fields array.
    *
@@ -181,6 +201,7 @@ class Pariah_Model
    * @var array
    */
   protected $_data = array();
+  
   /**
    * Defines redirected methods.
    * 

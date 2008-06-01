@@ -11,9 +11,16 @@
  * @author William Madden
  */
 
+require_once('Pariah/Model.php');
+
 /**
  * Mappers are used to map Models from memory to some persistent storage, and
  * back again.
+ * 
+ * The operations on Models that mappers provide are:
+ * 	  o Loading
+ *    o Saving
+ *    o Deleting
  * 
  * The Mapper base class provides the additional service of instantiating
  * specific mappers.
@@ -21,11 +28,19 @@
 class Pariah_Mapper
 {
   /**
+   * The type of Model handled by this mapper (to be overridden by subclasses).
+   *
+   * @var string
+   */
+  protected $_model = null;
+  
+  /**
    * An array of mappers instantiated through get.
    *
    * @var unknown_type
    */
   protected static $_mappers = array();
+  
   
   /**
    * The protected constructor, used to enforce singleton mappers.
@@ -51,6 +66,16 @@ class Pariah_Mapper
   public function save( Pariah_Model $model )
   {
     throw new Pariah_Mapper_Exception("Function save() must be implemented in a subclass.");
+  }
+  
+  /**
+   * Deletes a model.
+   *
+   * @param Pariah_Model $model
+   */
+  public function delete( Pariah_Model $model )
+  {
+    throw new Pariah_Mapper_Exception("Function delete() must be implemented in a subclass.");
   }
   
   /**
